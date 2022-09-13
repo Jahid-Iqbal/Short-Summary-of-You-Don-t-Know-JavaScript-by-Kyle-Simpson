@@ -1,7 +1,8 @@
 
 # Program Execution
 Computer cannot understand the language what we write. So there is some procedures happening in between the human writing language and machine readable language. In program execution section we will discuss on the intermediate state what are used to translating the codes in machine readable language.
-![Execution process](https://www.guru99.com/images/1/053018_0616_CompilervsI1.png)
+
+![Execution process](https://ecomputernotes.com/images/difference-between-compiler-and-interpreter.png)
 
 **Two types of translators are available:**  
 **Interpreter:**  
