@@ -1,7 +1,7 @@
 
 # Program Execution
 Computer cannot understand the language what we write. So there is some procedures happening in between the human writing language and machine readable language. In program execution section we will discuss on the intermediate state what are used to translating the codes in machine readable language.
-![Execution process](D:\\ComVSint.jpg "Execution process")
+![Execution process](https://www.guru99.com/images/1/053018_0616_CompilervsI1.png)
 
 **Two types of translators are available:**  
 **Interpreter:**  
@@ -12,6 +12,3 @@ Compiler transforming the code into machine readable language at once. Creating 
 
 **Is JavaScript is an interpreted language?**  
 JavaScript processed the codes every time of execution. That’s why it’s asserted, JavaScript is an interpreted language but actually not. The strong and powerful “V8” engine of JavaScript compiles the code on the fly and then run the code.
-
-
-
