@@ -48,7 +48,7 @@ with(personalInfo){
     age=35;
     city="Noakhali";
 }
-console.log(personalInfo);  //{personName: 'Abdur Rahim', age: 35, city: 'Noakhali'}
+console.log(personalInfo);  //{personName: 'Abdur Rahman', age: 35, city: 'Noakhali'}
 ```
 This time you can do the same task using `with()` function. You just need to pass the object as parameter and then initialize the variables.
 
