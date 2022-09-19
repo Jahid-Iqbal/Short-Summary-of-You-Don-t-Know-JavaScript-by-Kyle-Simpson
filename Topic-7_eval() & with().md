@@ -19,7 +19,7 @@ Here, a sequence of statements passed as parameter to `eval()` function. Those s
 * With eval(), third party code can see the scope of the application.
 
 # _with()_ Function
->with is used to making multiple property reference against an object without repeating the object reference itself each time.
+>with is used to make multiple property reference against an object without repeating the object reference itself each time.
 
 
 ```js
@@ -44,7 +44,7 @@ var personalInfo={
 };
 console.log(personalInfo);  //{personName: 'Abdullah', age: 28, city: 'Dhaka'}
 with(personalInfo){
-    personName="Abdur Rahim";
+    personName="Abdur Rahman";
     age=35;
     city="Noakhali";
 }
