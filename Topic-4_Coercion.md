@@ -115,3 +115,24 @@ var a=10;
 var b="45";
 b>a;        //true as b coerced to number
 ```
+**Interesting Coercion:**  
+`3==50;  //true`
+Strange. How can it be possible????
+```js
+Number.prototype.valueOf= function(){
+    return 3;
+}
+var a=new Number(50);
+console.log(a==3);      //true
+```
+Here, `valueof()` is an object of `Number.prototype` which use to return primitive value of specified object. The object converted to a primitive data type. So, an implicit coercion is happening. `valueof()` is forced to return a specific value. That's why whatever value is passed to `Number()` function it returns the externally assigned value. So, when `var a=new Number(50);` is executed, the `valueof` function returns 3 and `a==3` is returning true.  
+Same scenario happened in below program as well.
+```js
+var i=1
+Number.prototype.valueOf= function(){
+    return i++;
+}
+var a=new Number(50);
+console.log(a==1&&a==2&&a==3);     //true
+```
+`a==1&&a==2&&a==3` is true. This is so funny. But actually that is possible. Here `valueof` returns value of i started from 1. Every time value incremented by one. That's why in first call `valueof` return 1 and then incremented to 2. In second call return the value 2 and incremented to 3 and so on.
