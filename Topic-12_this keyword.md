@@ -69,7 +69,7 @@ console.log(bar.valueOf(a)) //foo {a: 2}
 ```
 Variable bar got the reference of function `foo` using `new` keyword. so `bar.a` got the value of function `foo`. Actually the `this` keyword referred to the prototype of that function. As `bar` got the reference of function `foo`, so `bar` also can access that value.
 
-`this` in method:
+**`this` in method:**  
 If you call a function as a method of an object, `this` will refer to that object scope.
 ```js
 var obj={
@@ -126,7 +126,7 @@ The `bind()` method allows us to permanently tie a `this` argument to a value. I
 var obj={
     myName:"Abdullah",
     display(){
-        console.log("My name is "+this.myName);
+        console.log("My name is "+this.myName); //My name is Abdullah
     }
 };
 setTimeout(obj.display.bind(obj),1000);
