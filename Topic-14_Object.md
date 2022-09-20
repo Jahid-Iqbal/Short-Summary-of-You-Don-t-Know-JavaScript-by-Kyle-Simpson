@@ -72,4 +72,95 @@ Object.defineProperty(personalInfo,'personName',{
 });
 console.log(personalInfo.personName);   //Uncaught TypeError TypeError: Cannot redefine property: personName  
 ```
-Here, making `configurable` `false` and then tried to delete the property but did't work. In case of `strict mode` that would show `TypeError`. Again tried to update the configuration but system shown `TypeError`.
+Here, making `configurable` `false` and then tried to delete the property but did't work. In case of `strict mode` that would show `TypeError`. Again tried to update the configuration but system shown `TypeError`. 
+
+**Modifying enumerable:**  
+`enumerable` hide a property from the for..in loop. If `enumerable` will be `false` then that property cannot be accessible to for..in loop.
+```js
+var personalInfo={
+    personAge: 30,
+    personCity: "Dhaka"
+};
+Object.defineProperty(personalInfo,'personName',{
+    value:"Ahmad",
+    writable: true,
+    configurable: true,
+    enumerable: false
+});
+console.log(personalInfo.propertyIsEnumerable("personName"));   //false
+for(var key in personalInfo){
+    console.log(key);   //personAge personCity
+}
+```
+In this code, `enumerable` of property `personName` updated to `false`. So, expectedly the for..in loop failed to fetch that property. The function `propertyIsEnumerable(property)` returns true if enumerable of that property is `true` and `false` otherwise.
+
+**Constant Object Property:**  
+The property of an object can be made constant by changing all the property (writable, configurable, enumerable) to `false`.  
+**Example:**
+```js
+var personalInfo={
+    personName:"Ahmad",
+    personAge: 30,
+    personCity: "Dhaka"
+};
+Object.defineProperty(personalInfo,'personName',{
+    value:"Ahmad",
+    writable: false,
+    configurable: false,
+    enumerable: false
+});
+personalInfo.personName="Abdullah";
+console.log(personalInfo.personName);   //Ahmad
+```
+**preventExtensions():**  
+This function prevents an object from further property extension. This function is a property of `Object` object and accepts an object as arguments or parameter.
+```js
+var personalInfo={
+    personName:"Ahmad",
+    personAge: 30,
+};
+Object.preventExtensions(personalInfo);
+personalInfo.personCity="Dhaka";    //TypeError incase of strict mode
+console.log(personalInfo);      //{personName: 'Ahmad', personAge: 30}
+```
+Here, after `preventExtensions()` function another property is added to object `personalInfo` but that did't add to that object property. In case of strict mode this extension would through `TypeError`.
+
+**`seal():`**  
+`seal()` function calls two other function implicitly. Those are `preventExtensions()` and `defineProperty()` with `configurable` false and `writable` true. So, after the `seal()` function, no extension will be applicable and no configuration can be changed apart from making `writable` false. 
+```js
+var personalInfo={
+    personName:"Ahmad",
+    personAge: 30,
+};
+Object.seal(personalInfo);
+personalInfo.personCity="Dhaka";    //TypeError incase of strict mode
+
+Object.defineProperty(personalInfo,personName,{
+    writable: true,
+    configurable:true,
+    enumerable:true
+});
+console.log(personalInfo);      //Uncaught TypeError: Cannot define property Ahmad, object is not extensible
+```
+Here, after `seal()` function, tried to add another property to object `personalInfo` but failed as `seal()` prevented that. Again tried to change the configuration but shown `TypeError`.
+
+**`freeze()`:**  
+This function calls the `seal()` function implicitly with `writable` false. So no extension, change in value and change in configuration will be allowed after `freeze()` function. This function provides most immutability.
+```js
+var personalInfo={
+    personName:"Ahmad",
+    personAge: 30,
+};
+Object.freeze(personalInfo);
+personalInfo.personCity="Dhaka";    //TypeError incase of strict mode
+
+personalInfo.personAge=80;          ////TypeError incase of strict mode
+
+Object.defineProperty(personalInfo,personName,{
+    writable: true,
+    configurable:true,
+    enumerable:true
+});
+console.log(personalInfo);      //Uncaught TypeError: Cannot define property Ahmad, object is not extensible
+```
+Here, after `freeze()` function tried to add another property, changing the value and updating the configurations but all failed.
