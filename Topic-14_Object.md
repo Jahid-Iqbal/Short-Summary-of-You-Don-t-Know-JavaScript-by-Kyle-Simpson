@@ -19,16 +19,27 @@ console.log(object[365]);
 ```
 The property names can be dynamic. You can pass the property name as below.
 ```js
-var personName="Ahmad";
+var personName="Ahmad's";
 var personalInfo={
     [personName+" designation"]: "Software Engineer",
     [personName+" qualification"]: "Bsc Engineer"
 };
-console.log(personalInfo);  //{Ahmad designation: 'Software Engineer', Ahmad qualification: 'Bsc Engineer'}
+console.log(personalInfo);  //{Ahmad's designation: 'Software Engineer', Ahmad's qualification: 'Bsc Engineer'}
 ```
 Here, you don't need to change the name each time it required. Just change once and the object will act accordingly.
 
-**getOwnPropertyDescriptor():**  
+Let say, you are maintaining employee details of a company. Employee is changed in the post of Software Engineer. Now you need to change the employee name. You can change the name without touching the source code of that object. If property name is defined inside [] then the property name is replaced with the assigned value. In below code, `personName` is replaced with `Ahmad`.  
+
+**Example:**
+```js
+var personName="Ahmad";
+var personalInfo={
+    [personName]: "Software Engineer"
+};
+console.log(personalInfo);  //{Ahmad: 'Software Engineer'}
+```
+
+**`getOwnPropertyDescriptor():`**  
 An object has some configuration, depending on those that object can be modified. Such as, writable, enumerable and configurable. All of them are remain true by default. You can verify all the configuration using built in function `getOwnPropertyDescriptor()`.
 ```js
 var personalInfo={
@@ -36,7 +47,7 @@ var personalInfo={
 };
 console.log(Object.getOwnPropertyDescriptor(personalInfo,"myName"));  //{value: 'Ahmad', writable: true, enumerable: true, configurable: true}
 ```
-**defineProperty():**  
+**`defineProperty():`**  
 You can modify the default configuration of an object using function `defineProperty()`. This function accepts 3 parameters. First one is an object, second one is a property name of that object, third one is a set of configuration.
 
 **Modifying writable:**  
@@ -112,7 +123,7 @@ Object.defineProperty(personalInfo,'personName',{
 personalInfo.personName="Abdullah";
 console.log(personalInfo.personName);   //Ahmad
 ```
-**preventExtensions():**  
+**`preventExtensions():`**  
 This function prevents an object from further property extension. This function is a property of `Object` object and accepts an object as arguments or parameter.
 ```js
 var personalInfo={
@@ -163,4 +174,41 @@ Object.defineProperty(personalInfo,personName,{
 });
 console.log(personalInfo);      //Uncaught TypeError: Cannot define property Ahmad, object is not extensible
 ```
-Here, after `freeze()` function tried to add another property, changing the value and updating the configurations but all failed.
+Here, after `freeze()` function tried to add another property, changing the value and updating the configurations but all failed.  
+
+**Converting Object to Array:**  
+Object is not iterable. So, if need to iterate then need to convert to array first. You can convert the object to array using function `entries()`. This function accepts an object as parameter.  
+**Example:**
+```js
+var personalInfo={
+    personName:"Ahmad",
+    personAge: 30,
+};
+console.log(Object.entries(personalInfo));  //[Array(2), Array(2)]
+                                            //['personName', 'Ahmad']
+                                            //['personAge', 30]
+```
+**`Object.keys():`**  
+This function accepts an object as parameter and returns the property names of that object.
+```js
+var personalInfo={
+    personName: "Ahmad",
+    personAge: 28,
+};
+console.log(Object.keys(personalInfo));     //['personName', 'personAge']
+```
+
+**Existence of property of object:**  
+You can use `in` and `hasOwnProperty()` to check whether a property belongs to that object or not.  
+`in` use to check inside the object and even the higher level of object.  
+`hasOwnProperty()` use to check only inside the object.  
+
+**Example:**
+```js
+var personalInfo={
+    personName: "Ahmad",
+    personAge: 28,
+};
+console.log("personName" in personalInfo);  //true
+console.log(personalInfo.hasOwnProperty("personName")); //true
+```
