@@ -16,7 +16,7 @@ const array_name=[value1, value2, value3,.....];
 const id=[101, 102, 103];
 const name=["Ahmad","Abdullah","Abdur Rahman"];
 ```
-You can also crate an empty array and then assign values.
+You can also create an empty array and then assign values.
 ```js
 var programmingLanguage=[];
 
@@ -26,12 +26,21 @@ programmingLanguage[2]="Python";
 
 console.log(programmingLanguage);   //['JavaScript', 'Java', 'Python']
 ```
-Using Jab=vaScript keyword `new`
+Using JavaScript keyword `new`
 ```js
 var programmingLanguage=new Array("JavaScript","Java","Python");
 
 console.log(programmingLanguage);   //['JavaScript', 'Java', 'Python']
 ```
+
+**Append Array Elements:**  
+You can append or add new elements to an array using `array_name.push()`.
+```js
+var array=[1,2,3];
+array.push(4);
+console.log(array); //[1, 2, 3, 4]
+```
+
 **Accessing arrays elements:**  
 You can access the elements of an array using the index number. Array index starts from 0.
 ```js
@@ -66,4 +75,12 @@ array[1]=Date.now();
 array[2]="Cars";
 
 console.log(array);     //[100, 1663768375574, 'Cars']
+```
+**Array length:**  
+You can find out the length of the array using `array_name.length`.
+```js
+var array=[1,2,3,4];
+var length =array.length;
+
+console.log(length);    //4
 ```
