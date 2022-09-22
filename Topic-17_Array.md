@@ -33,12 +33,23 @@ var programmingLanguage=new Array("JavaScript","Java","Python");
 console.log(programmingLanguage);   //['JavaScript', 'Java', 'Python']
 ```
 
-**Append Array Elements:**  
-You can append or add new elements to an array using `array_name.push()`.
+**`push()` and `pop()`**  
+You can append or add new elements to an array using `array_name.push()`. The added item will always append at the end of the array.  
+You can also delete array element using `pop()`. Last element of the array will be deleted.  
+If you want to delete any item from the beginning then use `shift()` method and also add an element at the beginning with `unshift()` method. Function `unshift()` accept an element as parameter what you want to add and return the length of the array. `shift()` method return the deleted item.
 ```js
 var array=[1,2,3];
 array.push(4);
 console.log(array); //[1, 2, 3, 4]
+var poppedItem=array.pop();
+console.log(array);
+console.log("Popped item= "+poppedItem);    //4
+var shiftedItem=array.shift();
+console.log("Shifted item= "+shiftedItem);    //1
+console.log(array);    //[2, 3]
+var unshiftedItem=array.unshift(5);
+console.log("Popped item= "+shiftedItem);    //3
+console.log(array);    //[5, 2, 3]
 ```
 
 **Accessing arrays elements:**  
@@ -83,4 +94,56 @@ var array=[1,2,3,4];
 var length =array.length;
 
 console.log(length);    //4
+```
+**Deleting elements of Array:**  
+You can delete the value of an specific index using `delete` keyword.
+```js
+var array=[1,2,3,4];
+delete array[1];
+console.log(array);     //[1, empty, 3, 4]
+```
+**Merging or concatenating two Arrays:**   
+You can merge two arrays using `concat()` function. This function returns a new array and don't bother the existing arrays.
+```js
+var fruits1=["Mango","Banana"];
+var fruits2=["Blueberry","Watermelon"];
+var fruitsList=fruits1.concat(fruits2);
+console.log(fruitsList);                //['Mango', 'Banana', 'Blueberry', 'Watermelon']
+```
+**`splice():`**  
+You can add and remove items at a time using the function `splice()`. This function accepts 3 parameter like `splice(parameter1, parameter2, parameter3)` and returns an array of containing the deleted items.  
+`parameter1` is the index number where you want to add new elements.  
+`parameter2` is the number of elements you want to remove. If parameter1 is 0 means no addition then it removes from the beginning of the array but if parameter1 is some value like 2 then it will start removing from that index.  
+`parameter3` is the value you want to add in the mentioned index in parameter1.
+```js
+var fruits1=["Mango","Banana"];
+var fruits2=["Blueberry","Watermelon"];
+var fruitsList=fruits1.concat(fruits2);
+console.log(fruitsList);                //['Mango', 'Banana', 'Blueberry', 'Watermelon']
+
+fruitsList.splice(2,0,"Apple","Orange", "Lemon");   ////['Mango', 'Banana', 'Apple', 'Orange', 'Lemon', 'Blueberry', 'Watermelon']
+var deletedItem= fruitsList.splice(0,2);            ////['Mango', 'Banana', 'Apple', 'Orange', 'Lemon', 'Blueberry', 'Watermelon']
+console.log("Deleted Item= "+deletedItem);  //Mango,Banana
+fruitsList.splice(2,2, "Kiwi");         //['Apple', 'Orange', 'Kiwi', 'Watermelon']
+```
+Here,  `splice(2,0,"Apple","Orange", "Lemon")` means at index 2 the mentioned elements ("Apple","Orange", "Lemon") will be added. and no element will be removed as the parameter2 is 0.  
+`splice(0,2)` means 2 elements will be removed from the beginning of the array as parameter1 is 0 or no addition.  
+`splice(2,2, "Kiwi")` means 2 elements will be removed first starting from index 2 as parameter1 is 2 and then add an element ("Kiwi") at index 2.
+
+**`slice():`**  
+If you want to take a portion of an array then `slice()` function can be used. This function accepts 2 parameter like `slice(parameter1, parameter2)` and returns an array containing the section of an array.  
+parameter1 is the starting index of the specified portion of the array. It can be negative value as well. Like as, -2 means the second element from the last index of the array.  
+parameter2 is the ending index of the specified portion of the array. It can be negative as well. Like as, -2 means the second element from the last index of the array.
+
+```js
+var fruits1=["Mango","Banana"];
+var fruits2=["Blueberry","Watermelon"];
+var fruitsList=fruits1.concat(fruits2);
+console.log(fruitsList);                //['Mango', 'Banana', 'Blueberry', 'Watermelon']
+var slicedArray=fruitsList.slice(1,3);
+console.log(slicedArray);               //['Banana', 'Blueberry']
+var negativeSlice=fruitsList.slice(-3,-1);
+console.log(negativeSlice);             //['Banana', 'Blueberry']
+var negPosSlice=fruitsList.slice(-3,3);
+console.log(negPosSlice);               //['Banana', 'Blueberry']
 ```
