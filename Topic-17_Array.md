@@ -147,3 +147,15 @@ console.log(negativeSlice);             //['Banana', 'Blueberry']
 var negPosSlice=fruitsList.slice(-3,3);
 console.log(negPosSlice);               //['Banana', 'Blueberry']
 ```
+**`Array().fill():`**
+
+The `fill()` method use to fill up the index with the specific value. This method accepts 3 parameter like `fill(value, startIndex, endIndex)`.  
+value can be of any type. Like number or string.  
+startIndex and endIndex can be of number type. This two fields means the starting index and the ending index of the array where the value will be pushed. This 2 fields can be empty as well. In that case, whole array index will be filled up with the value.
+```js
+var fillArray= Array(5).fill(5);
+console.log(ar);                         //[5, 5, 5, 5, 5]
+var fillArray2= Array(5).fill(5,1,3);
+console.log(fillArray2);                 //[empty, 5, 5, empty, empty]
+```
+Here `Array(5)` means the array size and `fill(5)` means fill up the whole array with value 5. `fill(5,1,3)` means fill the index from 1 to 3 with value 5.
