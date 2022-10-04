@@ -90,9 +90,9 @@ Order served to Mr. Simpson
 Mr. Simpson Review: Excellent!
 ```
 >Here, another problem is being created. When you will work with some giant program, you may need to call thousands of functions one inside another which will create a huge chain and that is very tough to maintain and won't be readable. That is called as **callback hell**.
-```js
-Callback Hell:
 
+**Callback Hell:**
+```js
 takeOrder("Mr. Simpson",(customer)=>{
     porcessOreder(customer,()=>{
         completeOrder(customer,()=>{
