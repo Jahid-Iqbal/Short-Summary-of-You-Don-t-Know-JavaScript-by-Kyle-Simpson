@@ -136,3 +136,13 @@ var a=new Number(50);
 console.log(a==1&&a==2&&a==3);     //true
 ```
 `a==1&&a==2&&a==3` is true. This is so funny. But actually that is possible. Here `valueof` returns value of i started from 1. Every time value incremented by one. That's why in first call `valueof` return 1 and then incremented to 2. In second call return the value 2 and incremented to 3 and so on.
+
+**Output of `&&` and `||` Expressions:**
+```js
+let a=100;
+let b=200;
+let c="Last variable";
+console.log(a&&b&&c);   //Last variable
+console.log(a||b||c);   //100
+```
+In case of `&&` system will print the first false value. Such as if a is falsy then prints the value of a or if b is falsy but a is truthy then print the value of b. In case of `||` print the first true value. Such as if a is truthy then prints the value of a or if b is truthy but a is falsy then print the value of b.
