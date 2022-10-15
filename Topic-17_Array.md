@@ -33,7 +33,7 @@ var programmingLanguage=new Array("JavaScript","Java","Python");
 console.log(programmingLanguage);   //['JavaScript', 'Java', 'Python']
 ```
 
-**`push()` and `pop()`**  
+**`push()` and `pop()`:**  
 You can append or add new elements to an array using `array_name.push()`. The added item will always append at the end of the array.  
 You can also delete array element using `pop()`. Last element of the array will be deleted.  
 If you want to delete any item from the beginning then use `shift()` method and also add an element at the beginning with `unshift()` method. Function `unshift()` accept an element as parameter what you want to add and return the length of the array. `shift()` method return the deleted item.
@@ -159,3 +159,82 @@ var fillArray2= Array(5).fill(5,1,3);
 console.log(fillArray2);                 //[empty, 5, 5, empty, empty]
 ```
 Here `Array(5)` means the array size and `fill(5)` means fill up the whole array with value 5. `fill(5,1,3)` means fill the index from 1 to 3 with value 5.
+
+**`forEach()`:**
+
+![forEach](https://github.com/Jahid-Iqbal/Short-Summary-of-You-Don-t-Know-JavaScript-by-Kyle-Simpson/blob/main/Pictures/forEach.png)  
+
+`forEach(callback(currentValue, index, array))  `
+index and array parameters are optional. The currentValue points to each element. For example, currentValue is Element1 now and index is 0 and array is the input array.
+
+```js
+const myArray=new Array(1,2,3);
+myArray.forEach((element)=>{
+    console.log(element);       //1 2 3
+})
+```
+The `forEach()` loop iterates over array `myArray`. Each time it iterates over each element. Like as, in first iterates over element1 then element2 and so on.
+The forEach loop returns undefined.
+
+```js
+const myArray=new Array(1,2,3);
+const result=myArray.forEach((element)=>{
+    console.log(element);
+})
+console.log(result);        //undefined
+```
+
+**Example:**
+```js
+const myCities=new Array("Dhaka","Gazipur");
+const arrayInfo=(element,index)=>
+console.log(element+" is located at index "+index+" in the myCities array.");
+
+myCities.forEach((element,index)=>arrayInfo(element,index));
+// Dhaka is located at index 0 in the myCities array.
+// Gazipur is located at index 1 in the myCities array.
+```
+
+`**map():**`  
+
+![picture](https://github.com/Jahid-Iqbal/Short-Summary-of-You-Don-t-Know-JavaScript-by-Kyle-Simpson/blob/main/Pictures/map.png)  
+
+map function accepts a callback function and that callback function accepts 3 parameter. First parameter is mandatory and rest are optional.  
+`map(callback(currentValue, index, array))`  
+The map() function return a new array.
+
+```js
+const myArray=new Array(1,2,3,5,7,9);
+myArray.map((element,index,newArray)=>{
+    newArray=element*index;
+    console.log(newArray);      //0 2 6 15 28 45
+})
+```
+Here `map()` function accepts a callback function with 3 parameters. element picks the array elements of `myArray`, index takes the index of the element of `myArray` and `newArray` is an array.  
+`map()` function returns a new array.
+```js
+const myArray=new Array(1,2,3,5,7,9);
+const resultArray=myArray.map((element)=>element=element*element
+);
+console.log(resultArray);   //[1, 4, 9, 25, 49, 81]
+```
+
+**Example:**  
+Converting a JSON array to JavaScript object.
+```js
+const postJSON=[
+    '{"postID":101,"commentsQuantity":5}',
+    '{"postID":102,"commentsQuantity":10}',
+    '{"postID":103,"commentsQuantity":15}'
+]
+var postArray=[];
+postJSON.map((element)=>{ 
+    postArray.push(JSON.parse(element));
+});
+console.log(postArray);
+
+/*(3) [{…}, {…}, {…}]
+0:{postID: 101, commentsQuantity: 5}
+1:{postID: 102, commentsQuantity: 10}
+2:{postID: 103, commentsQuantity: 15}*/
+```
