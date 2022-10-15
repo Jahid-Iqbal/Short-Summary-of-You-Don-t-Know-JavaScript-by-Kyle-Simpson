@@ -39,6 +39,34 @@ var personalInfo={
 console.log(personalInfo);  //{Ahmad: 'Software Engineer'}
 ```
 
+**Objects are referenced type:**  
+```js
+const myObject={
+    a: 40
+};
+const copyOfMyObject=myObject;
+console.log(copyOfMyObject);    //40
+copyOfMyObject.b=50;
+console.log(myObject);      // {a:40, b:50}
+```
+Here, `myObject` and `copyOfMyObject` are pointing to a common location. That's why in any case of modification both objects are impacted.
+
+![Diagram](https://github.com/Jahid-Iqbal/Short-Summary-of-You-Don-t-Know-JavaScript-by-Kyle-Simpson/blob/main/Pictures/Object.png)
+
+```js
+const myObject={
+    a: 40,
+    b: true
+};
+
+const objectProperty="b";       
+console.log(myObject["a"]);              //40
+console.log(myObject[objectProperty]);  //true
+console.log(myObject["objectProperty"]);  //undefined
+myObject["new"+"Property"+"Name"]="New property";   //{newPropertyName: New property}
+```
+Here, in `myObject[objectProperty]`, JS engine is looking for a variable `objectProperty` and find `"b"` which is a property of `myObject`. In `myObject["a"]`, a is property of object `myObject`.
+
 **`getOwnPropertyDescriptor():`**  
 An object has some configuration, depending on those that object can be modified. Such as, writable, enumerable and configurable. All of them are remain true by default. You can verify all the configuration using built in function `getOwnPropertyDescriptor()`.
 ```js
