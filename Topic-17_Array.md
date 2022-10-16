@@ -271,3 +271,39 @@ console.log(findElement);   //23
 ```
 `find()` method checked thr logic implicitly and returned the value as soon as found true.
 
+**`every()` and `some()`:** 
+
+![every](https://github.com/Jahid-Iqbal/Short-Summary-of-You-Don-t-Know-JavaScript-by-Kyle-Simpson/blob/main/Pictures/every.png)
+
+check all the elements are following the condition or not. `every()` method returns `true` if all the elements return `true` and `false` if any of the element return `false`.
+
+```js
+const myArray=new Array(1,2,3,-5,7,9);
+const checkPositiveNumbers=myArray.every((element=>typeof element==="number"&&element>0));
+console.log(checkPositiveNumbers);      //false
+```
+
+![some](https://github.com/Jahid-Iqbal/Short-Summary-of-You-Don-t-Know-JavaScript-by-Kyle-Simpson/blob/main/Pictures/some.png)
+
+check all the elements are following the condition or not. `some()` method returns `false` if all the elements return `false` and `true` if any of the element return `true`.
+
+```js
+const myArray=new Array(1,2,3,-5,7,9);
+const checkPositiveNumbers=myArray.some((element=>typeof element==="number"&&element>0));
+console.log(checkPositiveNumbers);      //true
+```
+
+**`includes()`:**  
+
+![includes](https://github.com/Jahid-Iqbal/Short-Summary-of-You-Don-t-Know-JavaScript-by-Kyle-Simpson/blob/main/Pictures/includes.png)
+
+Search to find out whether an specific element is present in the array or not. If found then return true. This method accepts the starting index as second parameter.  
+N.B: This method works only on primitive elements of an array.
+
+```js
+const myArray=new Array(1,2,3,-5,7,9, [10,20],{a:100,b:200});
+const checkElement=myArray.includes(3);
+console.log(checkElement);              //true
+console.log(myArray.includes(2,3));     //false. First parameter is the element and second parameter is the starting index
+console.log(myArray.includes([10,20])); //false. includes method works on only primitive data.
+```
