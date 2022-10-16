@@ -307,3 +307,89 @@ console.log(checkElement);              //true
 console.log(myArray.includes(2,3));     //false. First parameter is the element and second parameter is the starting index
 console.log(myArray.includes([10,20])); //false. includes method works on only primitive data.
 ```
+**`reduce()`:**  
+
+![reduce](https://github.com/Jahid-Iqbal/Short-Summary-of-You-Don-t-Know-JavaScript-by-Kyle-Simpson/blob/main/Pictures/reduce.png)
+
+reduce method accepts a callback function with 2 mandatory parameters, accumulator and currentElement. Each time accumulator holds the updated array/accumulator.
+
+```js
+const myArray=new Array(10,23,35,-50,75,99);
+const sumElements=(numberArray=>numberArray.reduce(((accumulator,element)=>{
+    console.log("Accumulator is "+accumulator+" and Element is "+element);
+    return accumulator+element;
+}),0))
+console.log("Sum= "+sumElements(myArray));
+/*
+Accumulator is 0 and Element is 10
+Accumulator is 10 and Element is 23
+Accumulator is 33 and Element is 35
+Accumulator is 68 and Element is -50
+Accumulator is 18 and Element is 75
+Accumulator is 93 and Element is 99
+Sum= 192
+*/
+```
+
+You can provide a optional second parameter. Here, 0 is provided. That means `accumulator` starts executing from that parameter otherwise starts from the first element. Without second parameter output will be looking like,
+```js
+const myArray=new Array(10,23,35,-50,75,99);
+const sumElements=(numberArray=>numberArray.reduce(((accumulator,element)=>{
+    console.log("Accumulator is "+accumulator+" and Element is "+element);
+    return accumulator+element;
+})))
+console.log("Sum= "+sumElements(myArray));
+/*
+Accumulator is 10 and Element is 23
+Accumulator is 33 and Element is 35
+Accumulator is 68 and Element is -50
+Accumulator is 18 and Element is 75
+Accumulator is 93 and Element is 99
+Sum= 192
+*/
+```
+
+**Example:** Reduce an array of object to a single array.
+
+```js
+const personDetails=[
+    {
+        personName: "Bogdan",
+        personAge: 35
+    },
+    {
+        personName: "Stashchuk",
+        personAge: 40
+    },
+    {
+        personName: "Aminul",
+        personAge: 26
+    }
+];
+
+const allPersonNames=arrayOfPerson=>arrayOfPerson.reduce((namesArray,person)=>{
+    console.log(namesArray,person);
+    namesArray.push(person.personName);
+    return namesArray;
+},[]);
+console.log(allPersonNames(personDetails));
+/*
+(0) [] {personName: 'Bogdan', personAge: 35}
+(1) ['Bogdan'] {personName: 'Stashchuk', personAge: 40}
+(2) ['Bogdan', 'Stashchuk'] {personName: 'Aminul', personAge: 26}
+(3) ['Bogdan', 'Stashchuk', 'Aminul']
+*/
+```
+Here, namesArray/ accumulator started executing from an empty array. In second iteration accumulator gets ['Bogdan'], third iteration ['Bogdan', 'Stashchuk'] and finally after fourth iteration ['Bogdan', 'Stashchuk', 'Aminul']. Without the second parameter, that will end in `TypeError`.
+
+**Removing duplicate elements from an array:**
+```js
+const fruits=["Mango","Banana","Orange","Orange","apple","Kiwi","apple"];
+const uniqueFruits=arrayOfFruits=>arrayOfFruits.reduce((removeDuplicate,element)=>{
+    if(!removeDuplicate.includes(element))
+        removeDuplicate.push(element);
+    return removeDuplicate;
+},[]);
+
+console.log(uniqueFruits(fruits));  //['Mango', 'Banana', 'Orange', 'apple', 'Kiwi']
+```
