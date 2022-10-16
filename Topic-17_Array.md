@@ -393,3 +393,14 @@ const uniqueFruits=arrayOfFruits=>arrayOfFruits.reduce((removeDuplicate,element)
 
 console.log(uniqueFruits(fruits));  //['Mango', 'Banana', 'Orange', 'apple', 'Kiwi']
 ```
+
+**`sort()`:**
+
+![sort](https://github.com/Jahid-Iqbal/Short-Summary-of-You-Don-t-Know-JavaScript-by-Kyle-Simpson/blob/main/Pictures/sort.png)
+
+`sort()` method takes 2 elements of the array and do a-b. If a-b>0 then b>a, if a-b<0 then a>b if a-b=0 the a=b. Sorting the array in place.
+
+```js
+const sortArray=[5,3,88,4,33];
+console.log(sortArray.sort((a,b)=>a-b));    //[3, 4, 5, 33, 88]
+```
