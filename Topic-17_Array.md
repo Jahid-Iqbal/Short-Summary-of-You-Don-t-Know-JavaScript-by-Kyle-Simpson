@@ -195,11 +195,11 @@ myCities.forEach((element,index)=>arrayInfo(element,index));
 // Gazipur is located at index 1 in the myCities array.
 ```
 
-`**map():**`  
+**`map()`:**  
 
 ![picture](https://github.com/Jahid-Iqbal/Short-Summary-of-You-Don-t-Know-JavaScript-by-Kyle-Simpson/blob/main/Pictures/map.png)  
 
-map function accepts a callback function and that callback function accepts 3 parameter. First parameter is mandatory and rest are optional.  
+`map` function accepts a callback function and that callback function accepts 3 parameter. First parameter is mandatory and rest are optional.  
 `map(callback(currentValue, index, array))`  
 The map() function return a new array.
 
@@ -238,3 +238,36 @@ console.log(postArray);
 1:{postID: 102, commentsQuantity: 10}
 2:{postID: 103, commentsQuantity: 15}*/
 ```
+
+**`filter()`:**
+![picture](https://github.com/Jahid-Iqbal/Short-Summary-of-You-Don-t-Know-JavaScript-by-Kyle-Simpson/blob/main/Pictures/filter.png)  
+
+`filter` function accepts a callback function and that callback function accepts 3 parameter. First parameter is mandatory and rest are optional.  
+`filter(callback(currentValue, index, array))`  
+The `filter()` function returns a new array. JS engine checks the condition and generates true/false value implicitly and returns a new array consists of the true values.
+
+```js
+const myArray=new Array(1,2,3,5,7,9);
+const newArray=myArray.filter(element=>element>3);
+console.log(newArray);      //[5, 7, 9]
+```
+
+**`find()`:**  
+Finding a specific value from an array.
+
+![picture](https://github.com/Jahid-Iqbal/Short-Summary-of-You-Don-t-Know-JavaScript-by-Kyle-Simpson/blob/main/Pictures/find.png)  
+
+`find` function accepts a callback function and that callback function accepts 3 parameter. First parameter is mandatory and rest are optional.  
+`find(callback(currentValue, index, array))`  
+The `find()` function returns an element. JS engine checks the condition and generates true/false value implicitly and returns the first true value.
+
+```js
+const array=["a",23,{},23,50];
+var a=23;
+const findElement=array.find((element)=>{
+    return element===a;
+});
+console.log(findElement);   //23
+```
+`find()` method checked thr logic implicitly and returned the value as soon as found true.
+
