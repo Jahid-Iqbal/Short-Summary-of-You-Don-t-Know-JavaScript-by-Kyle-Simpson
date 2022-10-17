@@ -132,3 +132,73 @@ var obj={
 setTimeout(obj.display.bind(obj),1000);
 ```
 The `this` argument cannot be changed anymore even using `call()` or `apply()` function.
+
+**`this` inside `setTimeout()` method:**  
+
+`this` keyword return undefined when using inside the `setTimeout()` function.
+```js
+const str={
+    value: 100,
+    greet: function greet(){
+        setTimeout(function (){
+            console.log(this.value); //undefined
+        }, 1000);
+    }
+}
+str.greet();
+```
+You can solve the following problem using some techniques.
+
+**Solution 01:** Using variable declaration.  `const self=this;`
+```js
+const str={
+    value: 100,
+    greet: function greet(){
+        const self=this;
+        setTimeout(function (){
+            console.log(self.value);    //100
+        }, 1000);
+    }
+}
+
+str.greet();
+```
+
+**Solution 02:** Using `bind()` method
+```js
+const str={
+    value: 100,
+    greet: function greet(){
+        setTimeout(function (){
+            console.log(this.value);    //100
+        }.bind(this), 1000);
+    }
+}
+str.greet();
+```
+
+**Solution 03:** Using arrow function.
+```js
+const str={
+    value: 100,
+    greet: function greet(){
+        setTimeout(()=>{
+            console.log(this.value);    //100
+        }, 1000);
+    }
+}
+
+str.greet();
+```
+
+**`this` and `arrow` function:**  
+this keyword refers to the global object while using inside the arrow function.
+```js
+const str={
+    value: 100,
+    greet: ()=>{
+        console.log(this);      //Window
+    }
+}
+str.greet();
+```
