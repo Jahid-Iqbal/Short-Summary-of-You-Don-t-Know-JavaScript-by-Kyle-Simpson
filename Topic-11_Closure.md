@@ -50,3 +50,17 @@ for(var i=0;i<5;i++){
 ```
 The for loop iterates 5 times starting from 0. So, every time the value of i is incremented. But who holds the value of `i` ???  
 Closure holds the value of `i`. A closure created behind the loop and holds the value of `i`. If i is declared with `var` then closure holds a single `i` and increment that. So, previous value is erased. But if declared with `let` then every time it declared a new `i` and assign the value.
+
+**Example:**
+
+```js
+var funcs = [];
+for (var i = 0; i < 3; i++) {
+  funcs[i] = function() {
+    console.log("My value:", i);
+  };
+}
+for (let j = 0; j < 3; j++) {
+  funcs[j]();
+}
+```
